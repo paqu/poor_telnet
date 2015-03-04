@@ -1,22 +1,35 @@
 #include "func.h"
 #include "wrapfunc.h"
 
+void welcome_client(const char *address)
+{
+	printf("\nConnected to %s ...\n",address);
+	printf(" Escape character is '^]'\n\n");
+}
+
+void show_prompt()
+{
+	printf("[gg:hh:mm rrrr:mm:dd][adress][path]:");
+}
+
 void client_console_handler(FILE *fp, int sockfd)
 {
 	char sendline[MAXLINE], recvline[MAXLINE];
 	char end[] = "__end_message__";
 	int n;
+	show_prompt();
 	while (Fgets(sendline,MAXLINE,fp) != NULL) {
 		send(sockfd,sendline,strlen(sendline),0);
-		
+		memset(&recvline,'\0',sizeof(recvline));	
+
 		while(  0 < ( n = recv(sockfd,recvline,MAXLINE,0))) { 
 			if ( 0 == strncmp(recvline,end,sizeof(end))) {
 				printf("\n \n");
 				break;
 			}
 			Fputs(recvline,stdout);
-			memset(&recvline,'\0',sizeof(recvline));
 		}
+		show_prompt();
 	}
 }
 

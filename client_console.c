@@ -20,6 +20,7 @@ int main(int argc, const char *argv[])
 
 	Connect(sockfd, (SA *) &servaddr,sizeof(servaddr));
 
+	welcome_client(argv[1]);
 	client_console_handler(stdin,sockfd);
 
 	exit(0);
