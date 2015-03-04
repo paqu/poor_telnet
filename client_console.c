@@ -22,6 +22,6 @@ int main(int argc, const char *argv[])
 
 	welcome_client(argv[1]);
 	client_console_handler(stdin,sockfd);
-
+	close(sockfd);
 	exit(0);
 }
