@@ -4,8 +4,9 @@
 #include "main.h"
 
 char	*Fgets(char *, int, FILE *);
-void	 Fputs(char *, int, FILE *);
+void	 Fputs(char *,  FILE *);
 int		 Socket(int, int, int);
+void	 Bind(int ,const SA *, socklen_t);
 void	 Connect(int, const SA *, socklen_t);
 void	 Close(int);
 void	 Dup2(int, int);
