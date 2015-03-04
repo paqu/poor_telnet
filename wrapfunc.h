@@ -4,7 +4,7 @@
 #include "main.h"
 
 char	*Fgets(char *, int, FILE *);
-void	 Fputs(char *,  FILE *);
+void	 Fputs(const char *,  FILE *);
 int		 Socket(int, int, int);
 void	 Bind(int ,const SA *, socklen_t);
 void	 Connect(int, const SA *, socklen_t);
